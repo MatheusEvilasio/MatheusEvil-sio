@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <h:head>
+        <title>CADASTRO LIVRO</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="CADASTRO DE LIVRO">
+                <h:panelGrid>
+                    <p:outputLabel value="Nome do livro:"/>
+                    <p:inputText value="#{cadastroLivroBean.cadastroLivro.nomedolivro}"/>
+                    <p:outputLabel value="Edição:"/>
+                    <p:inputText value="#{cadastroLivroBean.cadastroLivro.edicao}"/>
+                    <p:outputLabel value="Ano:"/> 
+                    <p:inputText value="#{cadastroLivroBean.cadastroLivro.ano}"/>
+                    <p:outputLabel value="Autor:"/>
+                    <p:inputText value="#{cadastroLivroBean.cadastroLivro.autor}"/>
+                    <p:outputLabel value="Observação:"/>
+                    <p:inputTextarea value="#{cadastroLivroBean.cadastroLivro.observacao}"/>
+
+                </h:panelGrid>
+                
+
+
+                <p:commandButton value="CADASTRAR" actionListener="#{cadastroLivroBean.salvar}" update="tabela"/>
+            </p:panel>
+
+            <p:dataTable var="cadastrolivro"  value="#{cadastroLivroBean.cadastroLivro}" id="tabela">
+
+                <p:column headerText="Nome do livro:">
+                    <h:outputText value="#{cadastroLivroBean.cadastroLivro.nomedolivro}"/>
+                </p:column>
+
+                <p:column headerText="Edição:">
+                    <h:outputText value="#{cadastroLivroBean.cadastroLivro.edicao}"/>
+                </p:column>
+
+                <p:column headerText="Ano:">
+                    <h:outputText value="#{cadastroLivroBean.cadastroLivro.ano}"/>
+                </p:column>
+
+                <p:column headerText="Autor:">
+                    <h:outputText value="#{cadastroLivroBean.cadastroLivro.autor}"/>
+                </p:column>
+
+                <p:column headerText="Observação:">
+                    <h:outputText value="#{cadastroLivroBean.cadastroLivro.observacao}"/>
+                </p:column>
+                 <p:column headerText="Observação:">
+                     <p:commandButton value="editar" action="#{cadastroLivroBean.editar(id)}" update="@all"/>
+<!--                     <p:commandButton value="excluir" actionListener="" update="tabela"/>-->
+                </p:column>
+               
+            </p:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
